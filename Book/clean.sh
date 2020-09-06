@@ -9,6 +9,8 @@
 #find ./Ch* -executable -type f | xargs rm -f
 
 
+#[ $(find ./Ch* -executable -type f) ] || echo "There are no executable files to delete" && exit 0;
+
 echo "Executable files to be deleted:";
 i=0;
 for file in $(find ./Ch* -executable -type f);
