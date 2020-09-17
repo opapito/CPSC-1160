@@ -7,7 +7,7 @@ using namespace std;
    ***   *******  
   *****   *****   
  *******   ***    
-*********   *     
+*********   *      
 
 */
  
@@ -17,10 +17,12 @@ int main (){
     e=5;  
   for (int line = 1; line <=5; line++){
     for (int column = 1; column <=18; column++){
-      if ((column >= b && column <= e) || (column >= e + 4 && column <= (18 - line)))
+      if ((column >= b && column <= e) || (column >= e + 4 && column <= (18 - line))){
         cout <<"*";
-      else
+        }
+      else{
         cout <<" ";
+        }
     }
     b--;
     e++;
