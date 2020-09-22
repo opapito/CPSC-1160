@@ -24,7 +24,7 @@ long long geometric_sum(long long n){  // this solution of transforming the argu
 }
 */
 
-long long geometric_sum(int n){  // this solution of transforming the argument n long long worked for the overflow problem
+long long geometric_sum(int n){  
 // 1 + 2 + 2 + 4 + ......+ n
   return n * (n + 1LL) / 2; // LL promotes 1 to long long and, as consequence, all others numbers will also be promoted
 
