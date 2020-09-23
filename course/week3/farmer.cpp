@@ -12,14 +12,11 @@ Horses cost $10, pigs cost $3, and rabbits are only $0.50. A farmer buys 100 ani
 using namespace std;
 
 int main(){
-int counter{0};
-
 for (int h{1}; h < 101; h++){
   for (int p{1}; p < 101; p++ ){
     for (int r{1}; r < 101; r++){
-      if ((10*h+3*p+r*0.5) == 100 ){
-        
-        cout << "(" << ++counter <<")" << " one possible combination is " << h << " horses, " << p << " pigs and " << r << " rabbits." << endl;
+      if ((10*h + 3*p + r*0.5) == 100 && (h + p + r) == 100){
+        cout << "The farmer bought " << h << " horses, " << p << " pigs and " << r << " rabbits." << endl;
         break;
       }
     }
