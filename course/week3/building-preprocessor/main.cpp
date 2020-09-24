@@ -3,6 +3,7 @@
 
 #define GET(prompt, var) cout << "Enter " prompt << flush; cin >> var // Macro
 #define ADD(x) x * x
+#define X 1+1
 
 
 int main(){
@@ -18,6 +19,7 @@ int main(){
     cerr << "Your input was bad and your should fell bad" << endl;
     return 1;
   }
+  cout<< (X * X) << endl;
   cout << ADD(2 + 2) << endl; // preprocessor will translate to cout << 2 + 2 * 2 + 2 << endl; which will result in 8
   cout << "There are " << num_roots_of_quadratic(a, b, c) << " real roots" << endl;
   return 0;
