@@ -10,7 +10,7 @@ https://www.khanacademy.org/computing/computer-science/cryptography/modarithmeti
 using namespace std;
 
 int main(){
-int num1{0}, num2{0}, numb{0}, remainder{0}, gcd{0}, temp{0};
+int num1{0}, num2{0}, num_a{0}, num_b{0}, gcd{0}, temp{0};
 
 do {
   cout << "Enter two integers for gcd calculation: ";
@@ -24,6 +24,15 @@ do {
       temp = num1;
       num1 = num2;
       num2 = temp;
+    }
+    num_a = num1;
+    num_b = num2;
+    while (num_a != 0 && num_b !=0 ){
+      cout << "( " << num_a << " = " << num_b << " * " << (num_b !=0 ? num_a / num_b : 0) << " + " << (num_b !=0 ? num_a % num_b : 0) << " )" << endl;
+      temp = num_b;
+      num_b = num_a % num_b;
+      num_a = temp;
+
     }
 
     
