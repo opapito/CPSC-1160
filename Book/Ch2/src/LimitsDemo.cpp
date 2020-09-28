@@ -6,6 +6,8 @@ using namespace std;
 int main()
 {
   cout << "Listing actual limits:" <<endl;
+  cout << "SHORT_MIN is " << SHRT_MIN << endl;
+  cout << "SHORT_MAX is " << SHRT_MAX << endl;
   cout << "INT_MIN is " << INT_MIN << endl;
   cout << "INT_MAX is " << INT_MAX << endl;
   cout << "LONG_MIN is " << LONG_MIN << endl;
