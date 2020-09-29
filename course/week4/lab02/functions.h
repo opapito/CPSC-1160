@@ -1,9 +1,10 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-short factorial(short n); 
-int factorial(int n); 
-long factorial(long n); 
-long long factorial(long long n); 
+short factorial_limits(short n); 
+int factorial_limits(int n); 
+long factorial_limits(long n); 
+long long factorial_limits(long long n);
+double factorial(double n);
 
 #endif
