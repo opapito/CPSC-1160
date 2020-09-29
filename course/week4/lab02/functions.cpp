@@ -10,16 +10,20 @@ The types variables x, a and b must be the same type of the funcion which limit 
 
 */
 
+#include <cmath>
 #include "functions.h"
 
-double factorial (double n){
-  double a = 1;
-  for (int i = 1; i <= n; i++){
+int factorial (int n){
+  int a = 1;
+  for (size_t i = 1; i <= (unsigned) n; i++){
     a *= i;
   }  
   return a;
 }
 
+double probability (int k, int n){
+  return (1 - factorial(k)/(pow(k, n) * factorial(k - n))) * 100;
+}
 
 
 

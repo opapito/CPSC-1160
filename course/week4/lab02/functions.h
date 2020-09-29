@@ -1,10 +1,11 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-short factorial_limits(short n); 
-int factorial_limits(int n); 
-long factorial_limits(long n); 
-long long factorial_limits(long long n);
-double factorial(double n);
+short factorial_limits(short); 
+int factorial_limits(int); 
+long factorial_limits(long); 
+long long factorial_limits(long long);
+int factorial(int);
+double probability (int, int);
 
 #endif
