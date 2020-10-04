@@ -11,7 +11,7 @@ using namespace std;
 
 int main(){
 int num1{0}, num2{0}, num_a{0}, num_b{0}, gcd{0}, temp{0};
-
+bool valid{false};
 do {
   cout << "Enter two integers for gcd calculation: ";
   cin >> num1 >> num2;
@@ -25,8 +25,10 @@ do {
       num1 = num2;
       num2 = temp;
     }
+    valid = true;
     num_a = num1;
     num_b = num2;
+    cout << "Starting Euclidian Algorithm...." << endl;
     while (num_a != 0 && num_b !=0 ){
       cout << "( " << num_a << " = " << num_b << " * " << (num_b !=0 ? num_a / num_b : 0) << " + " << (num_b !=0 ? num_a % num_b : 0) << " )" << endl;
       temp = num_b;
@@ -34,11 +36,10 @@ do {
       num_a = temp;
 
     }
-
-    
+    cout << "The gcd of " << num1 << " and " << num2 << " is " << (num_a = 0 ? num_b : num_a)<< endl;
   }
 
-} while (!cin); 
+} while (!valid); 
 
 return 0;
 }
