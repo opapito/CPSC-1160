@@ -26,9 +26,9 @@ double *maximum_value(double *vals, size_t arr_size){
 return &vals[maxInd];
 }
 
-double mean (double *vals, size_t arr_size, size_t valid_entries){
+double mean (double *vals, size_t scope, size_t valid_entries){
   double sum{0};
-  for (size_t i = 0; i < arr_size; i++){
+  for (size_t i = 0; i < scope; i++){
     if (!std::isnan(vals[i])){
       sum += vals[i];
     }

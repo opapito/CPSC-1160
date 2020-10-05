@@ -24,7 +24,12 @@ int main(){
     return 0;
   }
   
-  size_t valid_entries{n};
+  if (n < 2) {
+      cout << "\nIt is necessary at least 2 valid entries!\nExiting..." << endl;
+      return 0;
+  }
+  
+  size_t valid_entries{n}; //declaring and initializing valid_entries to match with the amount of entries
 
   cout << "Type the " << n << " numbers:"<< endl;
   for (size_t i = 0; i < n ; i++){
@@ -43,12 +48,11 @@ int main(){
   }
 
   double *max_val = maximum_value(arr, sizeof arr / sizeof arr[0]);
-    
-  
+ 
   *max_val = NAN;  //excluding the max value from the average
   valid_entries--; //updating the number of valid entries to calculate the average
 
-  mean (arr, sizeof arr / sizeof arr[0], valid_entries);
+  mean (arr, n, valid_entries);
 
   return 0;
 }
