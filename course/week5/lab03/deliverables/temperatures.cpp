@@ -1,3 +1,10 @@
+/*
+*A program that reads in a list of temperatures from standard input and prints out the average temperature, ignoring the highest temperature.
+*
+*Author: Pablo Bourbom Soares
+* 
+*/
+
 #include <iostream>
 #include <cmath>
 #include <climits>
@@ -16,33 +23,32 @@ int main(){
     cout << "Invalid entry! \nQuitting...\n";
     return 0;
   }
+  
+  size_t valid_entries{n};
 
   cout << "Type the " << n << " numbers:"<< endl;
   for (size_t i = 0; i < n ; i++){
     cin >> arr[i];
     if (!cin){
-      cin.clear(); // DOES NOT CLEAR the buffer , but clears the fail bit, sets the fail state to false
+      cin.clear(); 
       cin.ignore(SSIZE_MAX, '\n');
       arr[i] = NAN;
+      valid_entries--;
     }
   }
   
-  double *max_val = maximum_value(arr, n);
-    
-  cout << "Excluding the max value " << *max_val << endl;
-  *max_val = NAN;
-
-
-  for (size_t i = 0; i < n; i++){
-    if (isnan(arr[i])){
-      cout << "The index " << i << " is NAN" << endl;
-      //break;
-    } else {
-      cout << "The number " << arr[i] << " is valid!" << endl;
-    }
+  if (!valid_entries){ // checking if at least one entry is valid in order to prevent division by 0 in mean function
+      cout << "\nAll entries are invalid!\nExiting..." << endl;
+      return 0;
   }
 
-  mean (arr, n);
+  double *max_val = maximum_value(arr, sizeof arr / sizeof arr[0]);
+    
+  
+  *max_val = NAN;  //excluding the max value from the average
+  valid_entries--; //updating the number of valid entries to calculate the average
+
+  mean (arr, sizeof arr / sizeof arr[0], valid_entries);
 
   return 0;
 }
