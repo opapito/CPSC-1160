@@ -35,19 +35,25 @@ int index_closest_to_middle(int const *arr, size_t aSize, int s) {
     if (!found){ 
       return -1; // if the value was not found, -1 is returned
     }
-   
-    for (int i = middle -1; i >= 0; i-- ){  // searching from middle to begining to find the lower index 
-      if (arrOcc[i]){                       // ******************WARNING*****************************************************************************************************    
-        return i;                           // It is not possible to use size_t in a countdow for loop as it is an UNSIGNED type. The conditions >= 0 OR > 0 won't work HERE
-      }                                     // https://stackoverflow.com/a/1951579 
-    }                                       // *******************************************************************************************************************************
-    
-    for (size_t i = middle + 1 ; i < aSize ; i++){ // searching from middle to end to find the lower index
-      if (arrOcc[i]){
-        return i;
-      }
-    }
 
+    /*
+    ******************WARNING*****************************************************************************************************    
+      It is not possible to use size_t in a countdow for loop as it is an UNSIGNED type. The conditions >= 0 OR > 0 won't work HERE
+      https://stackoverflow.com/a/1951579 
+    *******************************************************************************************************************************
+    */ 
+    size_t middleUp  {middle + 1};
+    for (int i = middle; i >= 0; i-- ){  // searching from middle to begining to find the lower index
+      
+      if (arrOcc[i]){                    // the lower index next to middle is returned first if equidistant   
+        return i;                           
+      }
+      if (arrOcc[middleUp]){            // searching from middle to end to find the lower index            
+        return middleUp;                // if the lower index next to middle did not return, the next upper will be the closest do the middle           
+      }
+      middleUp++;                       // middleUp needs to be increased in order to keep the simultaneously search
+    }                                       
+    
 
 return 0;
 }
@@ -59,6 +65,7 @@ int arr3[]{ 7, -4, 2, 7, 4, 9, 14, 3 };
 int arr4[]{ 3, 3, 3, 3, 3, 3, 3, 3 };
 int arr5[]{ 7, -4, 2, 7, 4, 3, 14, 7 };
 int arr6[]{ 7, -4, 3, 7, 4, 3, 14, 7 };
+int arr7[]{ 7, 4, 3, 7, 4, 3, 14, 7 };
 
 cout << index_closest_to_middle(arr, sizeof arr / sizeof arr[0], 7) << endl;    // should return 3
 cout << index_closest_to_middle(arr2, sizeof arr2 / sizeof arr2[0], 6) << endl; // should return 3
@@ -67,6 +74,8 @@ cout << index_closest_to_middle(arr3, sizeof arr3 / sizeof arr3[0], 3) << endl; 
 cout << index_closest_to_middle(arr4, sizeof arr4 / sizeof arr4[0], 3) << endl; // should return 3
 cout << index_closest_to_middle(arr5, sizeof arr5 / sizeof arr5[0], 3) << endl; // should return 5
 cout << index_closest_to_middle(arr6, sizeof arr6 / sizeof arr6[0], 3) << endl; // should return 2
+cout << index_closest_to_middle(arr7, sizeof arr7 / sizeof arr7[0], 4) << endl; // should return 4 
+
 
 return 0;
 }
