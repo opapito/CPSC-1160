@@ -22,8 +22,10 @@ int decN{0};
   
     int rem{0}, exp{0}, num{0};
     do {
-      rem = decN % 10;
-      decN /= 10;
+      rem = decN % 10; //(1) Modulus operator yields the remainder after integer division.
+                       //(2) The remainder of any integer number divided by 10 is its leftmost digit
+      
+      decN /= 10;      // (1) The quotient of an integer division by 10 is the same number without its leftmost digit
       num+=rem*pow(8, exp);
       exp++;
 

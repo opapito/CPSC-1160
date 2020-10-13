@@ -26,7 +26,7 @@ int main(){
  cin >> n;
   for (int i{-n}; i <= n; i++){
     cout << setw(3) << i << setw(4) << pow(i, 2) << setw(6) << pow(i, 3) << setw(12) << oct << i << endl;
-    cout << dec;
+    cout << dec; //backing to decimal number manipulator before the next loop in order to print the decimals numbers correctly 
   }
 
   return 0;
