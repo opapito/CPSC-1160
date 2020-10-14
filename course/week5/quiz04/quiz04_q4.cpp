@@ -37,10 +37,39 @@ int index_closest_to_middle(int const *arr, size_t aSize, int s) {
     }
 
     /*
-    ******************WARNING*****************************************************************************************************    
+    ***************** WARNING ****************************************************************************************************    
       It is not possible to use size_t in a countdow for loop as it is an UNSIGNED type. The conditions >= 0 OR > 0 won't work HERE
       https://stackoverflow.com/a/1951579 
-    *******************************************************************************************************************************
+    
+    ****************** UPDATE 1 ***************************************************************************************************
+    There is a way to make a countdown for loop work with size_t
+        for (size_t i = 5; i-- > 0; )
+        if (wantBurrito(i))
+            break;
+
+    https://flak.tedunangst.com/post/counting-up-vs-counting-down 
+    "I don’t usually see loops like this, so it took me a little extra effort to verify this is correct, but it is. The index looks to be too large, but it’s decremented before use, and we will hit zero inside the loop body."
+    
+    ****************** UPDATE 2 ***************************************************************************************************
+    Here is another way to make it works
+
+    size_t last = 5;
+    for (size_t i = last-1; i < last; i--) {
+      printf("%d\n", i); // prints 4, 3, 2, 1, 0
+    }
+    "Unsigned integer 0 - 1 becomes UINT_MAX. So instead of looking for -1, you watch for when your counter becomes bigger than its initial state."
+
+    ****************** UPDATE 3 ***************************************************************************************************
+    Another way to make it works
+    
+    int array[11];
+    for (size_t i = 11; i-- > 0; ) {
+        // Do something, f.ex. array[i] = i
+    }
+
+    "You must check for the condition before decrementing the index. Starting the enumeration with an initial value one more than the maximum valid index improves visual consistency and simplifies the test."
+    https://stackoverflow.com/questions/41075881/infinite-loop-when-using-size-t-in-a-count-down-for-loop/41076051#41076051 
+
     */ 
     size_t middleUp  {middle + 1};
     for (int i = middle; i >= 0; i-- ){  // searching from middle to begining to find the lower index
