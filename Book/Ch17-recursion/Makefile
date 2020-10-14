@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++17 -g -fsanitize=address
 LDFLAGS =  -fsanitize=address
 
-SRC = recursion1.o
+SRC = RecursiveBinarySearch.o
 OBJ = $(SRC:.cc=.o)
 EXEC = main
 
