@@ -31,8 +31,8 @@ int main(){
   cin >> z;
   // multiply by 21
  // cout << "Multiply by 21 = " << ((z << 4) + (z << 2) + z) << endl; //***********************************************
-                               //  z * 16  +  z * 4  + z            // important for the midterm 1
-                                                                    //***********************************************
+                                 //  z * 16  +  z * 4  + z            // important for the midterm 1
+                                                                      //***********************************************
   // 0      0000000000
   // 8      0000001000
   // 16     0000010000
@@ -52,15 +52,15 @@ int main(){
   // 12     01100
   // How I know determine if the last bit is 0 in order to conclude the number is divisible by 2, instead of using (n % 2 == 0)?
 
-  cout << (((z >> 1) << 1) == z) << endl; // (1) first method all last right digit is dropped and then a zero is added at the end, 
+  cout << (((z >> 1) << 1) == z) << endl; // (1) first method: all last right digit is dropped and then a zero is added at the end, 
                                           // if the number remains the same (the operation returns true "1"), it is divisible by 2, 
                                           // even number
   cout << !(z & 1) << endl;               // (2) second method, any EVEN number will give ZERO when used in a AND operation with the
                                           // number one
-                                          // 8        0000001000
-                                          // 1        0000000001
-                                          //=====================
-                                          //0         00000000000                                           
+                                          // 8        0000001000            7     0000000111
+                                          // 1        0000000001      #     1     0000000001
+                                          //=====================           ====================
+                                          //0         00000000000           1     0000000001                               
 
   return 0;
 }
