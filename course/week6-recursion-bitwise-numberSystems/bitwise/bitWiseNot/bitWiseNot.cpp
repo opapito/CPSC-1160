@@ -1,5 +1,5 @@
 /*
- Bitwise not4 is denoted ~ in C++
+ Bitwise not is denoted ~ in C++
   - It fips all bits in a number
   - It is sometimes used in combination with & for removing/clearing a bit
  E.g., if x & 1 keeps only the last bit, then x & ~ 1 clears only the last bit

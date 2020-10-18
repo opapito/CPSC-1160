@@ -31,7 +31,7 @@ cin >> dec;
       quotient/=2;
     };
   
-    cout << "The number " << dec << " in decimal has " << counter << " positions" << endl;
+    cout << "The number " << dec << " in decimal has " << counter << " binary positions" << endl;
 
     int *binaryDec = new int[counter];
 
