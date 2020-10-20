@@ -1,9 +1,8 @@
 #include <cmath>
-# include <climits>
+#include <climits>
 unsigned int highestOneBit(unsigned int n){
-  // (8 * sizeof n) - 1
 	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ //8 bits x number of bytes 
-	    if (n & (1 << i)){
+	    if (n & (1U << i)){
 					return pow(2, i);
 	    }
   }
@@ -22,3 +21,38 @@ unsigned int highestOneBit(unsigned int n){
 // 0001 0000 0000 0000 0000 0000 0000 0000 = 1 << 32 (overflow integer type), 2^32 = 4.294.967.296,so the function returns 0 if started with 32 (i{32})
 //========================================
 // 0001 0000 0000 0000 0000 0000 0000 0000 = 65536
+
+unsigned int lowestOneBit(unsigned int n){
+	for (unsigned int i{0}; i < sizeof n * CHAR_BIT; i++){ //8 bits x number of bytes 
+	    if (n & (1U << i)){
+					return pow(2, i);
+	    }
+  }
+	return 0;
+}
+
+unsigned int numberOfLeadingZeroes(unsigned int n){
+	unsigned int count {0};
+	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ //8 bits x number of bytes 
+	    if (n & (1U << i)){
+					return count;
+	    } else {
+				count++;
+			}
+  }
+	return 0;
+}
+
+unsigned int numberOfTrailingZeroes(unsigned int n){
+	unsigned int count {0};
+	for (unsigned int i{0}; i < sizeof n * CHAR_BIT; i++){ //8 bits x number of bytes 24
+	    if (n & (1U << i)){
+					return count;
+	    } else {
+				count++;
+			}
+  }
+	return 0;
+}
+
+

@@ -8,5 +8,8 @@
 #define INTEGER_H
 
 unsigned int highestOneBit(unsigned int);
+unsigned int lowestOneBit(unsigned int);
+unsigned int numberOfLeadingZeroes(unsigned int);
+unsigned int numberOfTrailingZeroes(unsigned int);
 
 #endif
