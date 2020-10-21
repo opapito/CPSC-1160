@@ -19,29 +19,46 @@ bool const map[N][N] = {
  bool isSafe(size_t, size_t, int);
 
  int paperPath(){
-   size_t row_aux{0},col{0};
+   size_t row_aux{0},col{0}, last_valid_row{0};
    int pathCount{0};
     for (size_t row{0}; row < 12; row++){
      row_aux = row;
      col = 0;
-      while (col < 12 || row_aux < 12){
-        if (!isSafe(row, col, N)){
+     
+      while (col < 12 && row_aux < 12){
+        if (!isSafe(row_aux, col, N)){
+          //cout << "\nNOT SAFE [" << row_aux << "," << col << "]\n";
           if (row_aux < 11){
             row_aux++;
           } else{
-            cout << "break";
+            cout << "\nbreak row_aux= " << row_aux <<" \n";
             break; // no path found from left to right up to down
           }
-          if (col == 11){
+
+          if (!((col - 1) > col)){
+            col --;
+          }
+            
+        } else {
+          last_valid_row = row_aux;
+          cout << "[" << row_aux << "," << col << "]" << (col == 11 ? "\n|*** col = 11 ****|":"->");
+          if (col < 11){
+            col++;
+          } else{
+            cout << endl;
             row_aux++;
           }
         }
-        cout << "[" << col << "," << row << "]->";
-        col++;
+        
+        if ((int) row_aux - (int) last_valid_row > 1){
+          cout << "\nbreak row_aux - last_valid_row > 1 " << ((int) row_aux - (int) last_valid_row ) <<" \n";
+          break;
+        }
       }
-      if (row_aux == 11){
+      cout << "row_aux = " << row_aux << " col= " << col << endl;
+      if (col >= 11){
         pathCount++;
-        cout << endl;
+        cout << "Found path: " << pathCount << endl;
       }
     }
 
@@ -51,9 +68,9 @@ bool const map[N][N] = {
  
 
  bool isSafe(size_t i, size_t j, int N){
-    size_t j_s = (j - 3 > j ? 0 : j - 3); // checking boundaries
+    size_t j_s = (j - 2 > j ? 0 : j - 2); // checking boundaries
     size_t j_e = ((j + 3) >= (unsigned) N ? N : j + 3);
-    size_t i_s = (i - 3 > i ? 0 : i - 3); // checking boundaries
+    size_t i_s = (i - 2 > i ? 0 : i - 2); // checking boundaries
     size_t i_e = ((i + 3) >= (unsigned) N ? N : i + 3);
 
     for (size_t col{j_s}; col < j_e ; col++ ){ //checking safe col
