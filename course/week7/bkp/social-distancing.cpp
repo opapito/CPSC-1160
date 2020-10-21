@@ -19,33 +19,22 @@ bool const map[N][N] = {
  bool isSafe(size_t, size_t, int);
 
  int paperPath(){
-   size_t row_aux{0},col{0};
-   int pathCount{0};
-    for (size_t row{0}; row < 12; row++){
-     row_aux = row;
-     col = 0;
-      while (col < 12 || row_aux < 12){
-        if (!isSafe(row, col, N)){
-          if (row_aux < 11){
-            row_aux++;
-          } else{
-            cout << "break";
-            break; // no path found from left to right up to down
-          }
-          if (col == 11){
-            row_aux++;
-          }
+    
+    for (size_t j{0}; j < 12; j++){
+        
+      for (size_t i{0}; i < 12; i++){
+        // map[row][col]
+        //if (map[i][j]){
+        //  cout << "person found at [" << i << "," << j << "]" << endl;
+        //}
+        //cout << "i = " << i << endl;
+        if (!isSafe(i, j, N)){
+          cout << "The square [" << i << "," << j << "] NOT safe" << endl;
         }
-        cout << "[" << col << "," << row << "]->";
-        col++;
-      }
-      if (row_aux == 11){
-        pathCount++;
-        cout << endl;
       }
     }
 
-  return pathCount;
+  return 0;
    }
 
  

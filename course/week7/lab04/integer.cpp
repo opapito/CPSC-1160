@@ -1,5 +1,7 @@
 #include <cmath>
 #include <climits>
+#include "integer.h"
+
 unsigned int highestOneBit(unsigned int n){
 	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ //8 bits x number of bytes 
 	    if (n & (1U << i)){
@@ -23,7 +25,7 @@ unsigned int highestOneBit(unsigned int n){
 // 0001 0000 0000 0000 0000 0000 0000 0000 = 65536
 
 unsigned int lowestOneBit(unsigned int n){
-	for (unsigned int i{0}; i < sizeof n * CHAR_BIT; i++){ //8 bits x number of bytes 
+	for (unsigned int i{0}; i < sizeof n * CHAR_BIT; i++){
 	    if (n & (1U << i)){
 					return pow(2, i);
 	    }
@@ -33,7 +35,7 @@ unsigned int lowestOneBit(unsigned int n){
 
 unsigned int numberOfLeadingZeroes(unsigned int n){
 	unsigned int count {0};
-	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ //8 bits x number of bytes 
+	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ 
 	    if (n & (1U << i)){
 					return count;
 	    } else {
@@ -45,7 +47,7 @@ unsigned int numberOfLeadingZeroes(unsigned int n){
 
 unsigned int numberOfTrailingZeroes(unsigned int n){
 	unsigned int count {0};
-	for (unsigned int i{0}; i < sizeof n * CHAR_BIT; i++){ //8 bits x number of bytes 24
+	for (unsigned int i{0}; i < sizeof n * CHAR_BIT; i++){ 
 	    if (n & (1U << i)){
 					return count;
 	    } else {
@@ -55,4 +57,10 @@ unsigned int numberOfTrailingZeroes(unsigned int n){
 	return 0;
 }
 
+unsigned int rotateLeft(unsigned int n, int shifts){
+	return n << shifts;
+}
 
+unsigned int rotateRight(unsigned int n, int shifts){
+	return n >> shifts;
+}
