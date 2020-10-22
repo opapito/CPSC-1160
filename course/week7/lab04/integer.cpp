@@ -1,3 +1,17 @@
+/*
+*A program that implements the following java functions:
+* 1. unsigned int highestOneBit(unsigned int);
+* 2. unsigned int lowestOneBit(unsigned int);
+* 3. int numberOfLeadingZeroes(unsigned int);
+* 4. int numberOfTrailingZeroes(unsigned int);
+* 5. unsigned int rotateLeft(unsigned int, int);
+* 6. unsigned int rotateRight(unsigned int, int);
+*
+*Author: Pablo Bourbom Soares
+* 
+*/
+
+
 #include <cmath>
 #include <climits>
 #include "integer.h"

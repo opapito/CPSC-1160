@@ -6,7 +6,7 @@
 */
 #ifndef SOCIAL_DISTANCING_H
 #define SOCIAL_DISTANCING_H
-int paperPath(size_t, size_t);
+void paperPath(size_t, size_t, int*);
 
 #endif
 

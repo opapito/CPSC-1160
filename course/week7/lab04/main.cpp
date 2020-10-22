@@ -5,6 +5,8 @@
 
 using namespace std;
 
+int pathCounter{0};
+
 int main(){
 /* int n{2147483647 };
 cout << "Maximum system integer: " << INT_MAX << endl;
@@ -27,7 +29,9 @@ cout << "Rotating Right of " << 32 << " by 1 -> "<< rotateRight(32, 1) << endl;
  */
 //cout << paperPath(0,0) << endl;
 //cout << paperPath(0,1) << endl;
-cout << paperPath(0,4) << endl;
+
+paperPath(0,0, &pathCounter);
+cout << pathCounter << endl;
 //cout << paperPath(0,5) << endl;
 
 return 0;

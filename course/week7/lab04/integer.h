@@ -1,5 +1,5 @@
 /*
-*A h file with functions prototypes
+*A h file with integer functions prototypes
 *
 *Author: Pablo Bourbom Soares
 * 
