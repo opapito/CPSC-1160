@@ -4,8 +4,8 @@
 *Author: Pablo Bourbom Soares
 * 
 */
-#ifndef SOCIAL-DISTANCING_H
-#define SOCIAL-DISTANCING_H
+#ifndef SOCIAL_DISTANCING_H
+#define SOCIAL_DISTANCING_H
 int paperPath();
 
 #endif

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <climits>
 #include "integer.h"
-#include "social-distancing.h"
+#include "social_distancing.h"
 
 using namespace std;
 
@@ -25,7 +25,10 @@ cout << "Rotating left of " << 32 << " by 1 -> "<< rotateLeft(32, 1) << endl;
 cout << "Rotating Right of " << 12 << " by 1 -> "<< rotateRight(12, 1) << endl;
 cout << "Rotating Right of " << 32 << " by 1 -> "<< rotateRight(32, 1) << endl;
  */
-cout << paperPath() << endl;
+//cout << paperPath(0,0) << endl;
+//cout << paperPath(0,1) << endl;
+cout << paperPath(0,4) << endl;
+//cout << paperPath(0,5) << endl;
 
 return 0;
 }
