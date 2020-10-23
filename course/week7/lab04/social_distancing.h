@@ -1,5 +1,5 @@
 /*
-*A h file with paperPath function prototype
+*A h file with the paperPath function prototype
 *
 *Author: Pablo Bourbom Soares
 * 

@@ -1,5 +1,5 @@
 /*
-*A program that implements the following java functions:
+*A C++ program that implements the following java functions:
 * 1. unsigned int highestOneBit(unsigned int);
 * 2. unsigned int lowestOneBit(unsigned int);
 * 3. int numberOfLeadingZeroes(unsigned int);
@@ -17,7 +17,7 @@
 #include "integer.h"
 
 unsigned int highestOneBit(unsigned int n){
-	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ //8 bits x number of bytes 
+	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ //size * number of bits in a byte (CHAR_BIT) 
 	    if (n & (1U << i)){
 					return pow(2, i);
 	    }
@@ -49,14 +49,14 @@ unsigned int lowestOneBit(unsigned int n){
 
 unsigned int numberOfLeadingZeroes(unsigned int n){
 	unsigned int count {0};
-	for (int i{sizeof n * CHAR_BIT - 1}; i > 0; i--){ 
+	for (int i{sizeof n * CHAR_BIT - 1}; i >= 0; i--){ 
 	    if (n & (1U << i)){
 					return count;
 	    } else {
 				count++;
 			}
   }
-	return 0;
+	return count;
 }
 
 unsigned int numberOfTrailingZeroes(unsigned int n){
@@ -68,7 +68,7 @@ unsigned int numberOfTrailingZeroes(unsigned int n){
 				count++;
 			}
   }
-	return 0;
+	return count;
 }
 
 unsigned int rotateLeft(unsigned int n, int shifts){
