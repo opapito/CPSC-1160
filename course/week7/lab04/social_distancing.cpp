@@ -1,6 +1,6 @@
 /*
-* A program that finds path to the toilet paper while keeping a 2m distance from other shoppers to practice good social distancing.
-* The toilet paper is in (N􀀀1;N􀀀1), the bottom-right corner. A 1 in the map represents another shopper that must be avoid.
+* A program that finds a path to the toilet paper while keeping a 2m distance from other shoppers to practice good social distancing.
+* The toilet paper is in (N-1;N-1), the bottom-right corner. A 1 in the map represents another shopper that must be avoid.
 * The program count how many paths there are to the toilet paper, while staying 2 squares away from other shoppers.
 * The program only moves down or to the right. It does not consider diagonals either moving up or moving left around shoppers.
 * 

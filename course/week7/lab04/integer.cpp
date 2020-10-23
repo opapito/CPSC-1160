@@ -72,9 +72,9 @@ unsigned int numberOfTrailingZeroes(unsigned int n){
 }
 
 unsigned int rotateLeft(unsigned int n, int shifts){
-	return n << shifts;
+	return (n << shifts) | (n >> ((sizeof n * CHAR_BIT) - shifts));
 }
 
 unsigned int rotateRight(unsigned int n, int shifts){
-	return n >> shifts;
+	return (n >> shifts) | (n << ((sizeof n * CHAR_BIT) - shifts));
 }

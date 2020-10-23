@@ -8,9 +8,9 @@ using namespace std;
 int pathCounter{0};
 
 int main(){
-/* int n{2147483647 };
 cout << "Maximum system integer: " << INT_MAX << endl;
 cout << "System bit size: " << CHAR_BIT << endl;
+/* int n{2147483647 };
 cout << "Highest one bit of " << n << " -> "<< highestOneBit(n) << endl;
 cout << "Highest one bit of " << 0 << " -> "<< highestOneBit(0) << endl;
 cout << "Lowest one bit of " << 157 << " -> "<< lowestOneBit(157) << endl;
@@ -33,6 +33,10 @@ cout << "Rotating Right of " << 32 << " by 1 -> "<< rotateRight(32, 1) << endl;
 paperPath(0,0, &pathCounter);
 cout << pathCounter << endl;
 //cout << paperPath(0,5) << endl;
+
+cout << "Rotating left of " << 16 << " by 2 -> "<< rotateLeft(16, 2) << endl;
+cout << "Rotating Right of " << 16 << " by 2 -> "<< rotateRight(16, 2) << endl;
+
 
 return 0;
 }
