@@ -9,7 +9,7 @@
 */
 
 #include <iostream>
-using namespace std;
+#include "social_distancing.h"
 
 int const N = 12;
 
