@@ -1,5 +1,16 @@
 #include <iostream>
 
+/*
+Example of linear search recursive
+
+static bool search(int const *xs, size_t n, int target){
+  if (n == 0)             return false;
+  else if (*xs == target) return true;
+  else                    return search(&xs[1], n - 1, target);
+  
+}
+*/
+
 static bool search(int const *xs, size_t n, int target){
   for (size_t i = 0; i < n ; i++){
     if (xs[i] == target) {
