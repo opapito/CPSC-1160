@@ -14,6 +14,7 @@ static void merge(double const *l, size_t ln, double const *r, size_t rn, double
 }
 
 // Merge sort: in worst case scenarios merge sort is as efficient as quicksort
+// The idea behind merge sort is that every array of size 1 (with only one element) is already sorted.
 static void sort (double *xs, size_t n){
   if (n <= 1) return;
   size_t const midpoint = n / 2;

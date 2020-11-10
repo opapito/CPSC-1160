@@ -2,7 +2,7 @@
 
 // Selection sort
 static void sort(double *xs, size_t n){
-  if (n <= 1) return; // Every array of size 0 is sorted. Every array of size 1 is also sorted
+  if (n <= 1) return; 
     double *smallest = &xs[0];
     for (size_t i = 0; i < n; i++) {
       if (xs[i] < *smallest){  // Selection sort is a comparison based sorting algorithm
