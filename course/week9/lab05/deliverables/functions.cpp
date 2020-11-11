@@ -10,6 +10,10 @@
 #include "functions.h"
 #define THRESHOLD 625 
 
+/*
+The function selection_sort implements the a recursive selection sort algorithm in the pointed [*array] of size [n].
+The function is only called when the array size is bellow the threshold
+*/
 static void selection_sort(long *array, size_t n){
   if (n == 0){
    return;
@@ -26,6 +30,10 @@ static void selection_sort(long *array, size_t n){
   selection_sort(&array[1], n - 1);
 }
 
+/*
+The function merge implements an algorithm that merges two pointed [*l] and [*r] of size ln and rn.
+The function is only called when both arrays are already sorted
+*/
 static void merge(long const *l, size_t ln, long const *r, size_t rn, long *x){
   for (size_t left_i = 0, right_i = 0; left_i < ln || right_i < rn; x++){
     if (left_i >= ln){
@@ -41,7 +49,11 @@ static void merge(long const *l, size_t ln, long const *r, size_t rn, long *x){
   }
     
 }
-
+/*
+Function hybrid_sort implements a recursive hybrid sort algorithm in the pointed [*array] of size [n] 
+starting with merge sort and goes on until the size of the array
+is bellow the threshold, then the function selection sort is called to finish the sorting process.
+*/
 void hybrid_sort(long *xs, size_t n){
   using namespace std;
   if (n <= 1){
