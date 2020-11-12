@@ -43,6 +43,6 @@ int main()
   int_or_float x = {.x = 3};
   int_or_float y = {.y = 2.5};
   x.y = 1.31626;       // this is actually okay
-  cout << x.x << endl; // undefined behaviour
+  cout << x.x << endl; // undefined behaviour -> Attempting to read from a different field (field not initialized at struct creation) to cause undefined behaviour
   return 0;
 }
