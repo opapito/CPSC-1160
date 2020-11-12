@@ -1,0 +1,4 @@
+g++ -g -Wall -Wextra -Wpedantic [source file.cpp] -o [executable name] 
+
+Multiple cpp and h files:
+g++ Circle.h Circle.cpp TestCircleWithHeader.cpp -o Main
