@@ -58,8 +58,20 @@ fraction &fraction::operator*=(fraction const &other){
 
 fraction fraction::operator*(fraction const &other) const {
   fraction f(num, denom);
-  return f*=other;
+  return f *= other;
 }
+
+fraction &fraction::operator/=(fraction const &other) {
+  num   *= other.denom;
+  denom *= other.num;
+  return *this;
+}
+
+fraction fraction::operator/(fraction const &other) const {
+  fraction f(num, denom);
+  return f /= other;
+}
+
 
 
 std::ostream &operator<<(std::ostream &out, fraction const &f){

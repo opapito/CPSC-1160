@@ -11,11 +11,18 @@ int main(){
   fraction i2(3,4);
   i += g;
   i2-=g;
+  fraction j(2,3);
+  fraction l(2,3);
+  l /= j;
 
   cout << h << endl
        << i << endl
        << i2 << endl
-       << (h * i) << endl;
+       << (h * i) << endl
+       << (j / j) << endl
+       << l << endl;
+
+
 
   /*
   cout << f.get_num() << "/" << f.get_denom()<< endl

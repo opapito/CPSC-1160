@@ -34,6 +34,9 @@ public:
   fraction &operator*=(fraction const &other);
   fraction operator*(fraction const &other) const;
 
+  fraction &operator/=(fraction const &other); 
+  fraction operator/(fraction const &other) const; 
+
 
 /*
   int get_num() const;
