@@ -22,7 +22,10 @@ public:
 /*
 What is the difference between operator functions and normal functions?
 ---------------------------------------------------------------------
-Operator functions are same as normal functions. The only differences are, name of an operator function is always operator keyword followed by symbol of operator and operator functions are called when the corresponding operator is used.
+Operator functions are same as normal functions.
+The only differences are:
+	(1) name of an operator function is always "OPERATOR" keyword followed by "SYMBOL" of operator; and
+	(2) operator functions are called when the corresponding operator is used.
 
 Can we overload all operators?
 ----------------------------------------------------------------------
