@@ -36,6 +36,7 @@ fraction::fraction(int num, unsigned denom) // as the default value for denom wa
 
 //[return type] [class name] [method name = "operator+="] [explicit RHS parameter] 
 //                           [implicit LHS "this" parameter]
+//The & next to a type means it is a reference (like int& ref = a_existing_variable), it is just an ALIAS for the variable, so ref = 5 will change the value stored in a_existing_variable
 fraction &fraction::operator+=(fraction const &other) {
 
     int new_num = this->num * other.denom + this->denom * other.num;
@@ -73,9 +74,14 @@ fraction fraction::operator/(fraction const &other) const {
 }
 
 
-
+//The & after ostream indicates that ostream (<<) is being passed as reference
 std::ostream &operator<<(std::ostream &out, fraction const &f){
   return out << f.num << "/" << f.denom;
+/*
+  // Another way
+  out << f.num << "/" << f.denom;
+  return out; //returning the reference to ostream
+*/
 }
 
 /*
