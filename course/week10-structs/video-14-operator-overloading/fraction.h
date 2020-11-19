@@ -11,12 +11,12 @@ public:
   fraction(int num, unsigned denom=1); //default parameter value (denom = 1)
   fraction &operator+=(fraction const &other); 
   /* 
-  *  It DOES NOT have "const" keyword in the return type definition because it MUTATES the LEFT hand operator.
+  *  It DOES NOT have "const" keyword AT THE END of the function definition because it MUTATES the LEFT hand operator.
    * We also need to return a REFERENCE to the object mutated, this is why we put the & before the LEFT hand side
   */
   fraction operator+(fraction const &other) const; 
   /*
-  *  It HAS "const" in the return type definition because it DOES NOT mutate the LEFT hand operator. Plus operators always have CONST in the return type
+  *  It HAS "const" AT THE END of function definition because it DOES NOT mutate the LEFT hand operator. Plus operators always have CONST AT THE END
   *  When leading with BINARY operators(those with two operands, one of the left of the plus sign "+" and one on the right)
   * , the operator on the LEFT hand side will be the IMPLICIT PARAMETER THIS, the parameter on the RIGHT hand side will
   *  be the EXPLICIT PARAMETER
