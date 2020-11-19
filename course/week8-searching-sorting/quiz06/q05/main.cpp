@@ -41,10 +41,13 @@ bool search_adjacent_elements(int const *x, size_t n, int target1, int target2){
   if (n == 0){
     return false;
   }
-  size_t const halfIndex = n / 2;
-  cout << "halfIndex-> " << halfIndex << " x[halfIndex]= " << x[halfIndex] << " n - 1 = " << n - 1 << " n = " << n << endl;
-  if ((x[halfIndex] == target1) && (x[halfIndex + 1] == target2)){
-    return true; 
+  int const halfIndex = n / 2;
+  cout << "halfIndex-> " << halfIndex << " x["<< halfIndex<< "]= " << x[halfIndex] << " n - 1 = " << n - 1 << " n = " << n << endl;
+  if ((x[halfIndex] == target1)){
+    cout << "target1 found, halIndex->" << halfIndex << endl;
+     if (halfIndex != ((signed) n - 1) && x[halfIndex + 1] == target2){
+        return true; 
+     }
   } else if (x[halfIndex] < target1){
     return search_adjacent_elements(&x[halfIndex + 1], n - halfIndex - 1, target1, target2);
   } else{
@@ -56,16 +59,21 @@ bool search_adjacent_elements(int const *x, size_t n, int target1, int target2){
 int main (){
 
 int x[] = { 3, 5, 10, 14, 19, 25, 45, 60 };
+int y[] = { 3, 5, 10 };
+
 //cout << linear_search_adjacent_elements(x, sizeof x/sizeof x[0], 10, 14) << endl;
 //cout << linear_search_adjacent_elements(x, sizeof x/sizeof x[0], 25, 19) << endl;
 //cout << linear_search_adjacent_elements(x, sizeof x/sizeof x[0], 25, 60) << endl;
 //cout << linear_search_adjacent_elements(x, sizeof x/sizeof x[0], 60, 60) << endl;
-cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 10, 14) << endl;
-cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 25, 19) << endl;
-cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 25, 60) << endl;
-//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 60, 60) << endl; // out of bounds issue
-cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 14, 19) << endl;
-cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 45, 60) << endl;
-cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 3, 5) << endl;
 
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 60, 60) << endl; // out of bounds issue
+
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 10, 14) << endl;
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 25, 19) << endl;
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 25, 60) << endl;
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 14, 19) << endl;
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 45, 60) << endl;
+//cout << search_adjacent_elements(x, sizeof x/sizeof x[0], 3, 5) << endl;
+cout << search_adjacent_elements(y, sizeof y/sizeof y[0], 3,5) << endl;// out of bounds issue
+cout << search_adjacent_elements(y, sizeof y/sizeof y[0], 10,10) << endl;// out of bounds issue
 }
