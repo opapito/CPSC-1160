@@ -5,8 +5,8 @@ class Player {
     int x, y;
     int speed;
   void Move(int xa, int ya){
-    x += xa * player.speed;
-    y += ya * player.speed;
+    x += xa * speed;
+    y += ya * speed;
 
 }  
 };

@@ -2,16 +2,16 @@
 #include <sstream>	// this is used for testing. Don't worry about it
 
 /* put q1 here */
-enum class colours {
+enum class colour {
 black, blue, red, yellow, green, pink
 };
 /* put q2 here */
-enum class patterns {
-solid, stripes, floral, polka, dots
+enum class pattern {
+solid, stripes, floral, polkadots
 };
 /* put q3 here */
-bool matches(colours c1, colours c2){
-  if (c1 === back || c2 == black){
+bool c_matches(colour c1, colour c2){
+  if (c1 == colour::black || c2 == colour::black){
     return true;
   }
   if (c1 == c2){
@@ -19,41 +19,46 @@ bool matches(colours c1, colours c2){
   }
   switch (c1)
   {
-  case blue {
-      if (c2 == red || c2 == pink){
+  case colour::blue: {
+      if (c2 == colour::red || c2 == colour::pink){
         return true;
       }
+      return false;
   }
     break;
   
-  case red {
-    if (c2 != pink){
+  case colour::red: {
+    if (c2 != colour::pink){
       return true;
     }
+    return false;
+    
   }
     break;
-  case yellow {
-    if (c2 != blue){
+  case colour::yellow: {
+    if (c2 != colour::blue){
       return true;
     }
+    return false;
   }
     break;
 
-  case green {
-    if (c2 != blue || c2 != pink){
+  case colour::green: {
+    if (c2 != colour::blue || c2 != colour::pink){
       return true;
     }
+    return false;
   }
     break;
-  case pink {
-    if (c2 != red || c2 != green){
+  case colour::pink:{
+    if (c2 != colour::red || c2 != colour::green){
       return true;
     }
+    return false;
   }
     break;
   default:
     return false;
-    break;
   }
 
 }
@@ -62,23 +67,27 @@ bool matches(colours c1, colours c2){
 
 struct clothing
 {
- colours c;
- patterns p;
+ colour c;
+ pattern p;
 };
-
  
 class outfit {
 	/* fill in for q5 */
   clothing shirt;
   clothing pants;
-  outfit(clothing shirt, clothing pants) :
+public:
+  outfit(clothing shirt, clothing pants) 
   :shirt(shirt), pants(pants)
   {
   }
-public:
 	/* fill in for q5 */
 	bool matches() const{
-    return shirt.c == pants.c && shirt.p == pants.p || shirt.p == solid || pants.p == solid;
+    if (c_matches(shirt.c, pants.c)){
+      if((shirt.p == pants.p) || (shirt.p == pattern::solid) || (pants.p == pattern::solid)){
+        return true;
+      }
+    }
+    return false;
   };	// write this for q6
 
 	void swap_shirt_with(outfit & other){
@@ -88,8 +97,18 @@ public:
     other.shirt = tmp;
   };	// write this for q7
 	  friend std::ostream &operator<<(std::ostream &out, outfit const &o){
-    return out << (shirt.c == pants.c && shirt.p == pants.p ? 
-     "shirt and pants have same colour and same pattern":""; );
+      if (o.shirt.c == o.pants.c ){
+        if (o.shirt.p == o.pants.p){
+          out << "shirt and pants have same colour and same pattern";
+        } else {
+          out << "shirt and pants have same colour and different pattern";
+        }
+      } else if(o.shirt.p == o.pants.p){
+         out << "shirt and pants have different colour and same pattern";
+      } else {
+        out << "shirt and pants have different colour and different pattern";
+      }
+      return out;
   };	// q8
 };
  
@@ -97,10 +116,10 @@ int main() {
 /* you do not need to change anything here */
 	clothing c0 = { colour::black, pattern::solid },
 		c1 = { colour::black, pattern::floral },
-		c2 = { colour::red, pattern::solid },
+		c2 = { colour::red, pattern::solid },//
 		c3 = { colour::blue, pattern::polkadots },
 		c4 = { colour::green, pattern::solid },
-		c5 = { colour::pink, pattern::floral },
+		c5 = { colour::pink, pattern::floral },//
 		c6 = { colour::yellow, pattern::solid },
 		c7 = { colour::blue, pattern::solid };
 	outfit o1(c0, c3),
@@ -124,17 +143,17 @@ int main() {
 	C(o5, true);
 	C(o6, true);
 	C(o7, true);
-	C(o8, true);
-	C(o9, false);
-	C(oA, true);
-	C(oB, false);
+	C(o8, true); 
+	C(o9, false); 
+	C(oA, true); 
+	C(oB, false); 
 	C(oC, true);
-	o6.swap_shirt_with(o9);
-	C(o6, false);
+	o6.swap_shirt_with(o9); 
+	C(o6, false); 
 	C(o9, true);
 #define M(o, e)	{ stringstream ss; ss << o; cout << "line " << __LINE__ << (ss.str() == e ? " passed" : " failed") << endl; }
-	M(o2, "shirt and pants have different colour and same pattern");
-	M(o1, "shirt and pants have different colour and different pattern");
-	M(o3, "shirt and pants have same colour and different pattern");
-	M(oC, "shirt and pants have same colour and same pattern");
+	M(o2, "shirt and pants have different colour and same pattern"); //failed, because it wasn't implemented
+	M(o1, "shirt and pants have different colour and different pattern");//failed, because it wasn't implemented
+	M(o3, "shirt and pants have same colour and different pattern");//failed, because it wasn't implemented
+	M(oC, "shirt and pants have same colour and same pattern"); // was implemented
 }
