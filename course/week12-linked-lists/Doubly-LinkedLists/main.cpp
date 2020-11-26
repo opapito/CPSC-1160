@@ -19,9 +19,17 @@ using namespace std;
 
 int main(){
   list l;
-  l.add_to_beginning(2);
   l.add_to_beginning(1);
   l.add_to_beginning(0);
+  l.add_to_end(2);
+  l.add_to_end(3);
+  l.add_to_end(4);
+  cout << l << endl;
+  cout << "Removing one from the BEGINING" << endl;
+  l.remove_from_beginning();
+  cout << l << endl;
+  cout << "Removing one from the END" << endl;
+  l.remove_from_end();
   cout << l << endl;
 }
 

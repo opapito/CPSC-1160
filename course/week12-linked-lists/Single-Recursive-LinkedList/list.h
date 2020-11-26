@@ -22,7 +22,12 @@ class node {
       out << n->data << (n->next ? ", " : "" ) << n->next; 
      /*
       (1) it is recursion. The n->next is a pointer to the next node, so it will keep calling the same left-shift << operator
-      (2) printing backwards
+      (2) printing forward
+      (3) to print backwards just call the next node first recursively, so when the base case is reach it will start to print from the last node to the first.
+      Using this format is better visualize the recursion
+        out << n->next                // keep checking the next node recursively until reach nullptr (operator left shift operator "<<" keep calling itself)
+            << (n->next ? ", " : "" ) // condition check if there is a next node for choose what to print
+            << n->data;               // after reach the end, start printing data
      */
     }
     return out;
@@ -39,7 +44,7 @@ public:
     head = new_node;  //setting head to pointing to the new node now
   }
   void add_to_end(int data){
-    if (!head){ // it is the first element of the list, call add_to_beginning
+    if (!head){ // if it is the first element of list which was empty, call add_to_beginning
       add_to_beginning(data);
     } else {
       head->add(data);
