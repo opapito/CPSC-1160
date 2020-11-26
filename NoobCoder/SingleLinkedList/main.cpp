@@ -163,7 +163,7 @@ public:
     } else if(header != NULL){ // Case 4: all other cases. The check for null is just caution
       Node *prev;
       Node *cur = header;
-      for (int i = 1; i < pos; i++){ // The condition i < pos will turn cur = the node which PRECEDES the one to be deleted
+      for (int i = 1; i < pos; i++){ // The condition i < pos will turn cur = the node to be deleted, because it only will stop when "pos" is EQUAL to "i"
         prev = cur;       // saving the current position
         cur = cur->next;  // moving for the next node
       }

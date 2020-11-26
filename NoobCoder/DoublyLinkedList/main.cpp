@@ -200,7 +200,7 @@ public:
 
   void removeAt(int pos)
   {
-    // Case 1: check for valid position
+    // Case 1: check if position is a valid position
     if (pos > size || pos < 1)
     {
       return;
@@ -211,19 +211,30 @@ public:
       removeFirst();
     }
     else if (pos == size)
-    { // Case 3: check if Pos is at las Node
+    { // Case 3: check if Pos is the last Node
       removeLast();
     }
     else if (header != NULL)
-    { // Case 4: all other cases. The check for null is just caution
-      Node *prev;
+    { // Case 4: check if position is between first and last node. The check for null is just for caution, to make sure the list is NOT empty
       Node *cur = header;
       for (int i = 1; i < pos; i++)
-      {                  // The condition i < pos will turn cur = the node which PRECEDES the one to be deleted
-        prev = cur;      // saving the current position
+      {                  // The condition i < pos will turn cur = the node to be deleted, because it only will stop when "pos" is EQUAL to "i"
         cur = cur->next; // moving for the next node
       }
-      prev->next = cur->next;
+      cur->prev->next = cur->next;                  
+      /*
+        "cur->prev" give us the previous node, the one "BEFORE" the current(the one to be deleted).
+        Now we want this previous node "BEFORE" to point to the next node "AFTER" the current node, 
+        so we need that BEFORE.next(the next pointer stored in BEFORE) to point to AFTER.prev, so we
+        do cur->prev->next = cur->next;
+      */
+      cur->next->prev = cur->prev;
+      /*
+        Now we need to do the point AFTER the current to point to the node BEFORE the current, so
+        cur->next give us the node AFTER the current. 
+        Now we want to access the previous pointer and makes it points to node BEFORE the current, so
+        whe do cur->next->prev = cur->prev;
+      */
       delete cur;
       size--;
     }
@@ -231,12 +242,13 @@ public:
 
   void instertAt(int pos, int data)
   {
-    // Case 1: check for valid pos
+    // Case 1: check to see if the possition is valid 
     if (pos > size + 1 || pos < 1)
     { // Here we use size + 1 instead of size alone, because we can achieve size + 1 easily using our append method
       return;
-      // Case 2: check if insertion at begining of list
+      
     }
+    // Case 2: check if insertion at begining of list
     else if (pos == 1)
     {
       prepend(data);
@@ -245,20 +257,24 @@ public:
     else if (pos == size + 1)
     {
       append(data);
-      // Case 4: all other cases
+      
     }
-    else if (header != NULL)
+    // Case 4: If position is between the begining and end of the list
+    else if (header != NULL) // just double checking to making sure list is not empty
     {
       Node *n = new Node(data);
-      Node *prev;
       Node *cur = header;
       for (int i = 1; i < pos; i++)
       {
-        prev = cur;
-        cur = cur->next;
+        cur = cur->next; // transversing the list until achieve the target node
       }
-      prev->next = n;
+      // these two nodes are now pointing to each other
+      cur->prev->next = n;
+      n->prev = cur->prev;
+
+      // these two nodes are now also pointing to each other
       n->next = cur;
+      cur->prev = n;
       size++;
     }
   }
@@ -287,6 +303,15 @@ int main()
   list.removeLast();
   list.toString();
   cout << "Linked list size-> " << list.getSize() << endl;
+  cout << "Removing the item in position 2" << endl;
+  list.removeAt(2);
+  list.toString();
+  cout << "Linked list size-> " << list.getSize() << endl;
+  cout << "Inserting the item 7 in position 2" << endl;
+  list.instertAt(2, 7);
+  list.toString();
+  cout << "Linked list size-> " << list.getSize() << endl;
+
 
 
   return 0;
