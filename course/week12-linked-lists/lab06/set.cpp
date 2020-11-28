@@ -21,12 +21,8 @@ set &set::operator=(set const &s){   // assignment operator
 }
 
 
-set &set::operator+=(set const &s){
+set &set::operator+=(set const &s){  // this operator works even if arrays have different sizes
   size_t bigger = std::max(num_elems, s.num_elems);
-  //(this->num_elems > s.num_elems ? this->num_elems : s.num_elems);
-  //std::cout << "bigger->" << bigger << std::endl;
-  //std::cout << "this->num_elems->" << this->num_elems << std::endl;
-  //std::cout << "s.num_elements->" << s.num_elems << std::endl;
   bool *new_array = new bool [bigger]{false};
   for (size_t i = 0; i < num_elems; i++){
     new_array [i] |= elems[i];
@@ -49,6 +45,47 @@ set set::operator+(set const &s) const {
 
 }
 
+// The relative complement or set difference of sets A and B, denoted A – B, is the set of all elements in A that are not in B
+set &set::operator-=(set const &s){ 
+  bool *new_array = new bool [num_elems]{false};
+  for (size_t i = 0; i < num_elems; i++){
+    new_array[i] = (elems[i] && !(s.elems[i]));
+  }
+  delete [] elems;
+  elems = new_array;
+  return *this;  
+}
+
+set set::operator-(set const &s) const{
+  set a = *this;
+  return a -= s;
+}
+
+set &set::operator*=(set const &s){ 
+  bool *new_array = new bool [num_elems]{false};
+  for (size_t i = 0; i < num_elems; i++){
+    new_array[i] = (elems[i] && (s.elems[i]));
+  }
+  delete [] elems;
+  elems = new_array;
+  return *this;  
+}
+
+set set::operator*(set const &s) const{
+  set a = *this;
+  return a *= s;
+}
+
+set set::operator~() const{ 
+  set a = *this;
+  for (size_t i = 0; i < a.num_elems; i++){
+    a.elems[i] = !(a.elems[i]);
+  }
+  return a;  
+}
+
+
+
 std::ostream &operator<<(std::ostream &out, set const &s){
   out << "[";
   
@@ -59,4 +96,16 @@ std::ostream &operator<<(std::ostream &out, set const &s){
   
   return out << "]";
 
+}
+
+
+set set::operator!(set const &s) const {
+ std::cout << "[";
+ for (size_t i = 0; i < s.num_elems; i++){
+    if (s.elems[i]){
+      std::cout << i;
+    }
+    std::cout << (i == s.num_elems - 1 ? "": ",");
+  }
+ std::cout << "]\n";
 }

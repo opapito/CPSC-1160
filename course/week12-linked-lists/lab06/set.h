@@ -50,28 +50,28 @@ public:
 	 * All numbers set in s will be removed.
 	 * 's' the set to do a removal with
 	 */
-	set &operator-=(set const &s);
+	set &operator-=(set const &s);																									//OK
 	/*
 	 * As -=, but constructs and returns a new set
 	 */
-	set operator-(set const &s) const;
+	set operator-(set const &s) const;																							//OK
 	/*
 	 * Mutates the current set by doing a set
 	 * intersection. All numbers not set in s will
 	 * be removed.
 	 * 's' the set to intersect with
 	 */
-	set &operator*=(set const &s);
+	set &operator*=(set const &s);																									//OK
 	/*
 	 * As *=, but constructs and returns a new set
 	 */
-	set operator*(set const &s) const;
+	set operator*(set const &s) const;																							//OK
 	/*
 	 * Negates the set. All numbers set will become
 	 * unset, and vice versa. Constructs and returns
 	 * a new set.
 	 */
-	set operator~() const;
+	set operator~() const;																												//OK
 	/*
 	 * Returns a reference to the given number in the
 	 * set.
@@ -82,6 +82,7 @@ public:
 	 * Print out a set
 	 */
 	friend std::ostream &operator<<(std::ostream &out, set const &s);
+	set operator!(set const &s) const;
 };
 
 #endif
