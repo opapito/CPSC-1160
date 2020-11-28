@@ -1,3 +1,9 @@
+/*
+* set.h file methods' implementations
+* 
+*Author: Pablo Bourbom Soares
+* 
+*/
 #include "set.h"
 
 
@@ -85,27 +91,26 @@ set set::operator~() const{
 }
 
 
-
 std::ostream &operator<<(std::ostream &out, set const &s){
-  out << "[";
-  
-  for (size_t i = 0; i < s.num_elems; i++){
-    out << (s.elems[i] ? "1": "0" )
-        << (i == s.num_elems - 1 ? "": ",");
-  }
-  
-  return out << "]";
-
+  out << "{";
+  bool printed {false};
+   for (size_t i = 0; i < s.num_elems; i++){
+    if (s.elems[i]){
+      if (printed){
+        out << ",";
+      }
+      out << i;
+      printed = true;
+    } 
+  }  
+  return out << "}";
 }
 
-
-set set::operator!(set const &s) const {
- std::cout << "[";
- for (size_t i = 0; i < s.num_elems; i++){
-    if (s.elems[i]){
-      std::cout << i;
-    }
-    std::cout << (i == s.num_elems - 1 ? "": ",");
+void set::printBinary(){
+  using namespace std;
+  for (size_t i = 0; i < num_elems; i++){
+    cout << (elems[i] ? "1" : "0"); 
+       
   }
- std::cout << "]\n";
+    cout << endl;
 }

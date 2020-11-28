@@ -1,3 +1,10 @@
+/*
+*A h file with functions prototypes
+*
+*Author: Pablo Bourbom Soares
+* 
+*/
+
 #ifndef SET_H
 #define SET_H
 /*
@@ -82,7 +89,11 @@ public:
 	 * Print out a set
 	 */
 	friend std::ostream &operator<<(std::ostream &out, set const &s);
-	set operator!(set const &s) const;
+	/*
+	 * Print out a set's binary digits
+	*/
+
+	void printBinary();
 };
 
 #endif
