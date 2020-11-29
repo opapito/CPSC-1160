@@ -92,7 +92,6 @@ public:
 	/*
 	 * Print out a set's binary digits
 	*/
-
 	void printBinary();
 };
 
