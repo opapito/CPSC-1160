@@ -31,10 +31,26 @@ int main(){
   l += 4;
   l += 5;
   cout << l << endl;
+  cout << "Size-> " << l.getSize()<< endl;
   l.revert();
   cout << l << endl;
-  cout << l.delete_at(0) << endl;
+  cout << l.delete_at(2) << endl;
   cout << l << endl;
+  cout << "Size-> " << l.getSize()<< endl;
+  cout << l.delete_at(2) << endl;
+  cout << l << endl;
+  cout << "Size-> " << l.getSize()<< endl;
+  cout << l.delete_at(7) << endl;
+  cout << l << endl;
+  cout << "Size-> " << l.getSize()<< endl;
+  cout << l.delete_at(1) << endl;
+  cout << l << endl;
+  cout << "Size-> " << l.getSize()<< endl;
+  cout << "l[0] = " << l[0] << endl;
+  l[0]=10;
+  cout << "l[0] = " << l[0] << endl;
+  cout << l << endl;
+
   return 0;
 }
 

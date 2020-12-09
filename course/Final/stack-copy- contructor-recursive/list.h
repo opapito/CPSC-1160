@@ -39,8 +39,9 @@ public:
 };
 
 class list {
-public:
   node *head;
+  int size{0};
+public:
   // as the example to be used is a queue, the instructor decided the HEAD will always be pointing to the END of the list
   list(): head(nullptr){}
   ~list() { delete head; }                          // destructor
@@ -53,7 +54,8 @@ public:
   }
 
   list &operator+=(int x){
-    head = new node(x, head); 
+    head = new node(x, head);
+    size++;
     /*
       Here, the head will always be pointing to the last node added
       (1) when adding the first node, the head will be pointing to it and the old head which has a nullpointer will be added to the "next" attribute. The nullpointer at the "next" attribute indicates that node is the last node of tha list, and one list with only one node in fact must have only one node with a nullpointer. An empty list, by its turn, has a nullpointer as head.
@@ -75,6 +77,7 @@ public:
     head = old_head->next;
     old_head->next = nullptr; // before to delete it is necessary to set the old head pointer to nullprt
     delete old_head;
+    size--;
     return *this;
   }
 
@@ -96,28 +99,63 @@ public:
   }
 
   int delete_at(int p){
-    int i{0};
-    int value{0};
+    int i{0}, value{0};
     node *prev;
     node *cur = head;
-    while (cur->next && i <= p) {
+    while (cur->next && i < p) {
      prev = cur;       // saving the current position
+     cur = cur->next;  // moving for the next node
      if (i == p){
-        prev->next = cur->next;
-        value = cur->value;
         break;
      }
-     cur = cur->next;  // moving for the next node
       i++;
     }
-        cur = nullptr;
-        prev = nullptr;
-        delete cur;
-        delete prev;
-    return value;
+
+    if (cur->next){ 
+    /*
+    The deletion will not occurs if the index specified it out off list bounds.
+    When it happens, cur->next (of the last node) is nullptr.
+    The method will return 0 (the value initially assigned to variable value) when out of bounds
+    */
+     prev->next = cur->next;
+     value = cur->value;
+     cur->next = nullptr;
+     delete cur;
+     size--;
+    }
+     return value;
   }
+  int &operator[](int p) {
+      node *cur = head;
+      for( int i = 0; i < p; i++){
+        cur = cur->next;
+      }
+      return cur->value;
+  }
+
+  int getSize() {
+    return size;
+  }
+
  
 };
 
+
+   /*
+    (1) we are serving from the begining of the list
+    (2) if the list had only one node, the tail need to be update as well
+  
+    node * const old_head = head;
+    head = old_head->next;
+    if (head){
+      head->prev = nullptr;
+    } else {
+      tail = nullptr; // if we don't have a head, we also don't have a tail
+    }
+    int value = old_head->data;
+    old_head->next = nullptr;
+    delete old_head;
+    return value;
+ */
 
 #endif
