@@ -146,8 +146,45 @@ public:
       }
       this* = tmp;
       delete tmp;
-
     }
+
+  /*
+  ******************************************
+  * Serfs version                          * 
+  ******************************************
+  void final_obj::fun_add(int x){
+    final_obj temp;
+
+    node* current = head;
+
+    // create right side
+    while(current){
+        if(current->data > x)
+            temp.add(current->data);
+        current = current->next;
+    }
+
+    // add values which are equal, you didn't specify what to do with these ones
+    current = head;
+    while(current){
+        if(current->data == x)
+            temp.add(x);
+        current = current->next;
+    }
+
+    temp.add(x); // add extra value
+
+    // create left side
+    current = head;
+    while(current){
+        if(current->data < x)
+            temp.add(current->data);
+        current = current->next;
+    }
+
+    (*this) = temp;
+  }
+*/
  
 };
 
