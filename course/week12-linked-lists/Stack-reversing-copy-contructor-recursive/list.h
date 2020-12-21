@@ -86,8 +86,13 @@ public:
   }
 
   node* reverse(node* n) { 
+        /*
+        This piece of code is not necessary as this statement will never be true in this case. 
+        The node n will never be nullptr because n->next will be nullptr before, indicating the end of the list, so the new head will be assigned and the return statement will be executed making the statements after the recursive call to be executed 
+        
         if (n == nullptr) 
             return nullptr; 
+        */
         if (n->next == nullptr) { 
             head = n; 
             return n; 

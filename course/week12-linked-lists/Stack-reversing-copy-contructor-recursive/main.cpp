@@ -32,6 +32,7 @@ int main(){
   l += 5;
   cout << l << endl;
   cout << "Size-> " << l.getSize()<< endl;
+  cout<< "Starting to revert...." << endl;
   l.revert();
   cout << l << endl;
   cout << l.delete_at(2) << endl;
