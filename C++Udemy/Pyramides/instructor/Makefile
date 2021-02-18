@@ -5,4 +5,4 @@ main: main.o
 	$(CXX) -o $@ $^ $(LDFLAGS)
 .phony: clean
 clean:
-	$(RM)  *.o
+	$(RM)  main *.o
